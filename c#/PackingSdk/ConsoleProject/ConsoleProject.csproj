@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BaseOutputPath>$(SolutionDir)Build</BaseOutputPath>
+	<!-- 添加这行来移除目标框架文件夹 -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="echo f| xcopy /F /Y $(SolutionDir)Lib\x86\packing.dll $(TargetDir)packing.dll&#xD;&#xA;echo f| xcopy /F /Y $(SolutionDir)Lib\x86\rsa.dll $(TargetDir)rsa.dll" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PackingSdk.csproj" />
+  </ItemGroup>
+
+</Project>

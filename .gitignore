@@ -1,0 +1,14 @@
+/c#/PackingSdk/obj
+/c#/PackingSdk/Build
+/c++/PackingSdk/Build
+/java/PackingSdk/Build
+/c#/PackingSdk/.vs
+/java/PackingSdk/out
+/java/PackingSdk/logs
+/java/PackingSdk/.idea
+/c#/PackingSdk/ConsoleProject/obj
+/c#/PackingSdk/TestProject/obj
+/c#/PackingSdk/packages
+/python/PackingSdk/.idea
+/c++/PackingSdk/packages
+/c++/PackingSdk/.vs

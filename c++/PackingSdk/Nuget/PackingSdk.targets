@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Include -->
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <!-- Link -->
+  <ItemDefinitionGroup Label="Win32 And Debug" Condition="'$(Platform.ToLower())' == 'win32' And ( $(Configuration.ToLower().IndexOf('debug')) &gt; -1 )">
+    <Link>
+      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)lib\win32\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="Win32 And Release" Condition="'$(Platform.ToLower())' == 'win32' And ( $(Configuration.ToLower().IndexOf('debug')) == -1 )">
+    <Link>
+      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)lib\win32\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="x64 And Debug" Condition="'$(Platform.ToLower())' == 'x64' And ( $(Configuration.ToLower().IndexOf('debug')) &gt; -1 )">
+    <Link>
+      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)lib\win64\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="x64 And Release" Condition="'$(Platform.ToLower())' == 'x64' And ( $(Configuration.ToLower().IndexOf('debug')) == -1 )">
+    <Link>
+      <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)lib\win64\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!-- Lib -->
+  <ItemDefinitionGroup Label="Win32 and Debug" Condition="'$(Platform.ToLower())' == 'win32' And ( $(Configuration.ToLower().IndexOf('debug')) &gt; -1 )">
+    <Link>
+      <AdditionalDependencies>packing.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="Win32 and Release" Condition="'$(Platform.ToLower())' == 'win32' And ( $(Configuration.ToLower().IndexOf('debug')) == -1 )">
+    <Link>
+      <AdditionalDependencies>packing.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="x64 and Debug" Condition="'$(Platform.ToLower())' == 'x64' And ( $(Configuration.ToLower().IndexOf('debug')) &gt; -1 )">
+    <Link>
+      <AdditionalDependencies>packing.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Label="x64 and Release" Condition="'$(Platform.ToLower())' == 'x64' And ( $(Configuration.ToLower().IndexOf('debug')) == -1 )">
+    <Link>
+      <AdditionalDependencies>packing.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!-- Build -->
+  <Target Name="Copy_Packing_Win32_Debug_Files" Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" AfterTargets="Build">
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)bin\win32\debug\packing.dll" DestinationFolder="$(TargetDir)" />
+	<Copy SourceFiles="$(MSBuildThisFileDirectory)bin\win32\debug\rsa.dll" DestinationFolder="$(TargetDir)" />
+  </Target>
+  <Target Name="Copy_Packing_Win32_Release_Files" Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" AfterTargets="Build">
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)bin\win32\release\packing.dll" DestinationFolder="$(TargetDir)" />
+	<Copy SourceFiles="$(MSBuildThisFileDirectory)bin\win32\release\rsa.dll" DestinationFolder="$(TargetDir)" />
+  </Target>
+  <Target Name="Copy_Packing_x64_Debug_Files" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" AfterTargets="Build">
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)bin\win64\debug\packing.dll" DestinationFolder="$(TargetDir)" />
+	<Copy SourceFiles="$(MSBuildThisFileDirectory)bin\win64\debug\rsa.dll" DestinationFolder="$(TargetDir)" />
+  </Target>
+  <Target Name="Copy_Packing_x64_Release_Files" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" AfterTargets="Build">
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)bin\win64\release\packing.dll" DestinationFolder="$(TargetDir)" />
+	<Copy SourceFiles="$(MSBuildThisFileDirectory)bin\win64\release\rsa.dll" DestinationFolder="$(TargetDir)" />
+  </Target>
+</Project>

@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <BaseOutputPath>$(SolutionDir)Build</BaseOutputPath>
+	<!-- 添加这行来移除目标框架文件夹 -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	<IsTestProject>true</IsTestProject>
+	<PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PackingSdk.csproj" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="echo f| xcopy /F /Y $(SolutionDir)Lib\x86\packing.dll $(TargetDir)packing.dll&#xD;&#xA;echo f| xcopy /F /Y $(SolutionDir)Lib\x86\rsa.dll $(TargetDir)rsa.dll" />
+  </Target>
+
+</Project>

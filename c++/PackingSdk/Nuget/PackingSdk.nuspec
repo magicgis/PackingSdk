@@ -1,0 +1,36 @@
+<?xml version='1.0'?>
+<package>
+    <metadata>
+        <id>PackingSdk</id>
+        <version>1.5.8</version>
+        <authors>xingchuang</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>KNest排版优化算法的动态链接库</description>
+        <releaseNotes/>
+        <copyright/>
+        <dependencies/>
+    </metadata>
+    <files>
+        <!--dll-->
+        <file src="..\Lib\x86\packing.dll" target="build\native\bin\win32\debug"/>
+        <file src="..\Lib\x86\packing.dll" target="build\native\bin\win32\release"/>
+        <file src="..\Lib\x64\packing.dll" target="build\native\bin\win64\debug"/>
+        <file src="..\Lib\x64\packing.dll" target="build\native\bin\win64\release"/>
+		<file src="..\Lib\x86\rsa.dll" target="build\native\bin\win32\debug"/>
+        <file src="..\Lib\x86\rsa.dll" target="build\native\bin\win32\release"/>
+        <file src="..\Lib\x64\rsa.dll" target="build\native\bin\win64\debug"/>
+        <file src="..\Lib\x64\rsa.dll" target="build\native\bin\win64\release"/>
+        <!--include-->
+		<file src="..\PackingSdk\NestInput.h" target="build\native\include\"/>
+		<file src="..\PackingSdk\NestOutput.h" target="build\native\include\"/>
+        <file src="..\PackingSdk\PackingError.h" target="build\native\include\"/>
+        <file src="..\PackingSdk\PackingSdk.h" target="build\native\include\"/>
+        <!--lib-->
+        <file src="..\Lib\x86\packing.dll.lib" target="build\native\lib\win32\debug"/>
+        <file src="..\Lib\x86\packing.dll.lib" target="build\native\lib\win32\release"/>
+        <file src="..\Lib\x64\packing.dll.lib" target="build\native\lib\win64\debug"/>
+        <file src="..\Lib\x64\packing.dll.lib" target="build\native\lib\win64\release"/>
+        <!--target-->
+        <file src="PackingSdk.targets" target="build\native\"/>
+    </files>
+</package>
